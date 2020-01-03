@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>selectnodetreetable</title>
+		<script id="sap-ui-bootstrap"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-resourceroots='{"selectnodetreetable.selectnodetreetable": "./"}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-preload="async"
+			data-sap-ui-libs="sap.m">
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "selectnodetreetable.selectnodetreetable"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+	</body>
+</html>
