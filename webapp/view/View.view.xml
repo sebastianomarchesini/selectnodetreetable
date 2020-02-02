@@ -2,7 +2,8 @@
 	xmlns:m="sap.m" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" height="100%">
 	<m:Page showHeader="false" enableScrolling="false">
 		<m:content>
-			<TreeTable id="TreeTableBasic" rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="MultiToggle"
+			<TreeTable id="TreeTableBasic"
+				rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}, events: { dataReceived: '.onDataReceived'} }" selectionMode="None"
 				enableSelectAll="false" ariaLabelledBy="title" class="sapUiMediumMargin">
 				<extension>
 					<m:OverflowToolbar>
@@ -15,6 +16,11 @@
 					</m:OverflowToolbar>
 				</extension>
 				<columns>
+					<Column width="9rem">
+						<template>
+							<m:CheckBox selected="{selected}" select="onSelectCheckBoxTreeTable"/>
+						</template>
+					</Column>
 					<Column width="13rem">
 						<m:Label text="Categories"/>
 						<template>
