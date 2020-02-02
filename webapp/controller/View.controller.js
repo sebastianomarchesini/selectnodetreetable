@@ -55,19 +55,19 @@ sap.ui.define([
 			oObject.object = oModel.getObject(oObject.path);
 			if (oObject.object.categories !== undefined) {
 				//if is not leef
-				this.selectedModel(oObject);
+				this.selectedTopDownModel(oObject);
 				if (!oObject.object.selected) {
 					var sPath = oObject.path;
-					this.unselectedModel(oObject, sPath);
+					this.selectedBottomUpModel(oObject, sPath);
 				}
 			} else {
 				//if is leef
 				var sPath = oObject.path;
-				this.unselectedModel(oObject, sPath);
+				this.selectedBottomUpModel(oObject, sPath);
 			}
 		},
 
-		selectedModel: function (oObject) {
+		selectedTopDownModel: function (oObject) {
 			var bSelected = oObject.object.selected;
 			var aElement = oObject.object.categories;
 			for (var i = 0; i < aElement.length; i++) {
@@ -77,11 +77,11 @@ sap.ui.define([
 					var oElementObject = {
 						object: aElement[i]
 					};
-					this.selectedModel(oElementObject);
+					this.selectedTopDownModel(oElementObject);
 				}
 			}
 		},
-		unselectedModel: function (oObject, sPath) {
+		selectedBottomUpModel: function (oObject, sPath) {
 			var oModel = this.getView().getModel();
 			var aSplitPath = sPath.split("/");
 			aSplitPath.pop();
@@ -90,7 +90,7 @@ sap.ui.define([
 			var oParetnObject = oModel.getObject(sPath);
 			if (oParetnObject.selected && !oObject.selected) {
 				oParetnObject.selected = false;
-				this.unselectedModel(oParetnObject, sPath);
+				this.selectedBottomUpModel(oParetnObject, sPath);
 			}
 		}
 	});
